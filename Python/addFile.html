@@ -1,0 +1,37 @@
+{% extends "appbuilder/base.html" %}
+
+
+{% block head_css %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}"></link>
+{% endblock %}
+
+{% block content %}
+
+<form action="{{ url_for('upload_file') }}" class="form" method="POST" enctype="multipart/form-data">
+    <h2>Adicionar novo arquivo</h2>
+
+    <label for="type_document">Tipo do documento</label>
+    <select id="type_document" name="type_document" required>
+        <option value="sql">sql</option>
+        <option value=".pdf">.pdf</option>
+        <option value=".mp4">.mp4</option>
+    </select>
+
+    <label for="path_document">Escolha um arquivo </label>
+    <input type="file" id="path_document" name="path_document" required>
+
+    <button type="submit" id="button-add-file">Enviar</button>
+</form>
+
+<div id="pop-up">
+    <div id="pop-up-content">
+        <span class="close">&times;</span>
+        <p>Arquivo enviado com sucesso!</p>
+    </div>
+
+</div>
+    
+{% endblock %}
+
+

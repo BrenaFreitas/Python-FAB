@@ -1,0 +1,48 @@
+{% extends "appbuilder/base.html" %}
+
+
+{% block head_css %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/custom_styles.css')}}"></link>
+{% endblock %}
+
+{% block content %}
+
+<div class="table-content">
+        
+    <h2>Arquivos Armazenados</h2>
+    <table>
+        <tr class="title-table">
+            <th>ID</th>
+            <th>Tipo do documento</th>
+            <th>Arquivo</th>
+            <th></th>
+            <th></th>
+        </tr>
+
+        {% for file in files %}
+
+        <tr class="data-table">
+            <th>{{file.id}}</th>
+            <th>{{file.type_document}}</th>
+            <th>{{file.path_document}}</th>
+            <th>
+                <button class="btn-delete">
+                    Modificar
+                </button>
+            </th>
+            <th>
+                <button class="btn-edit">
+                  Editar
+                </button>
+            </th>
+
+        </tr>
+        {% endfor %}
+
+    
+    </table>
+
+
+</div>
+{% endblock %}

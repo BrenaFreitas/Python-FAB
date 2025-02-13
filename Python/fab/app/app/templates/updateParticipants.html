@@ -1,0 +1,33 @@
+{% extends "appbuilder/base.html" %}
+
+{% block head_css %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}"></link>
+{% endblock %}
+
+
+{% block content %}
+
+<form action="" class="form" method="POST">
+    <h2>Incluir participante ao projeto</h2>
+
+    <label for="name_project">Nome do Projeto</label>
+    
+    <select name="name_project" id="name_project">
+        {% for project in projects %}
+        <option value="{{project.id}}">{{project.name_project}}</option>
+        {% endfor %}
+    </select>
+
+    <label for="name">Nome do participante</label>
+    <select name="name_member" id="name_project">
+        {% for member in members %}
+        <option value="{{member.id}}">{{member.name_member}}</option>
+        {% endfor %}
+    </select>
+
+    <button>Incluir</button>
+
+</form>
+
+{% endblock %}
